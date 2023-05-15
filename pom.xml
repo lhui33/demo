@@ -1,0 +1,154 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.kunke.sanguo</groupId>
+	<artifactId>root-pom</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>root-pom</name>
+
+	<modules>
+		<module>engine-broker</module>
+		<module>engine-common</module>
+		<module>engine-gate</module>
+		<module>engine-logic-hall</module>
+	</modules>
+
+	<!--统一管理版本 的一个父 pom-->
+	<properties>
+		<!-- 项目版本 -->
+		<ioGame.version>17.1.40</ioGame.version>
+		<!-- jdk 版本 -->
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<encoding>UTF-8</encoding>
+
+		<!-- lombok 消除冗长的 Java 代码 https://www.oschina.net/p/lombok https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<lombok.version>1.18.24</lombok.version>
+
+		<!-- redis internal : https://www.oschina.net/p/redisson https://mvnrepository.com/artifact/org.redisson/redisson -->
+		<redisson.version>3.17.3</redisson.version>
+
+		<!-- JSR380 bean 验证框架 https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<hibernate-validator.version>7.0.4.Final</hibernate-validator.version>
+		<!-- JSR380 https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+		<jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+		<!-- JSR380 https://mvnrepository.com/artifact/org.glassfish/jakarta.el -->
+		<jakarta.el.version>4.0.2</jakarta.el.version>
+
+		<!-- Java 实体映射工具 https://mvnrepository.com/artifact/org.mapstruct/mapstruct https://mapstruct.org/documentation/reference-guide/ -->
+		<org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
+
+		<!-- temp spring boot https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<spring.version>5.3.20</spring.version>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+		<springboot.version>2.7.0</springboot.version>
+		<!--  junit https://mvnrepository.com/artifact/junit/junit  -->
+		<junit.version>4.13.2</junit.version>
+		<!-- 模拟客户端 https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
+		<java-websocket.version>1.5.3</java-websocket.version>
+		<!-- 演示用的假数据 https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+		<javafaker.version>1.0.2</javafaker.version>
+
+		<!-- slf4j https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<slf4j-api.version>1.7.36</slf4j-api.version>
+		<!-- slf4j https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<logback.version>1.2.11</logback.version>
+		<!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+		<hutool.version>5.8.5</hutool.version>
+		<!-- Hazelcast提供弹性可扩展的分布式内存计算 https://mvnrepository.com/artifact/com.hazelcast/hazelcast -->
+		<hazelcast.version>5.1.1</hazelcast.version>
+
+	</properties>
+
+	<dependencies>
+		<!-- lombok 简化 java 代码 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+<!--			<optional>true</optional>-->
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!--		<dependency>-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>slf4j-api</artifactId>-->
+<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+<!--			<scope>compile</scope>-->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Json解释器 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.67_noneautotype2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.fastjson2</groupId>
+			<artifactId>fastjson2</artifactId>
+			<version>2.0.23</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.8.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.1-jre</version>
+		</dependency>
+
+	</dependencies>
+
+	<!--dependencyManagement 标签用于控制子模块的依赖版本等信息，该标签只用来控制版本，不能将依赖引入 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-api.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+</project>
