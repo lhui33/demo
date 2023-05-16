@@ -40,13 +40,13 @@ public class GameUserLoginAction {
      * @return  1
      */
     @ActionMethod(LogicHallCmd.selectService)
-    public IntWrapper selectService(SelectServiceReq selectServiceReq, MyFlowContext flowContext){
+    public void selectService(SelectServiceReq selectServiceReq, MyFlowContext flowContext){
         UserInfoAttachment userInfoAttachment =new UserInfoAttachment();
         userInfoAttachment.setUserId(flowContext.getUserId());
         userInfoAttachment.setServiceId(selectServiceReq.getServiceId());
         // 设置元信息 ----- 关键代码
         ExternalCommunicationKit.setAttachment(userInfoAttachment);
-        return IntWrapper.me(1);
+//        return IntWrapper.me(1);
     }
     @ActionMethod(LogicHallCmd.creationRole)
     public IntWrapper userCreationRole(CreationRole creationRole,MyFlowContext flowContext){
